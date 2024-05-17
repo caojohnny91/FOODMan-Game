@@ -1,15 +1,64 @@
-h1 {
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2 {
   text-align: center;
   font-family: "Rowdies", sans-serif;
   font-weight: 700;
   font-style: normal;
+  color: white;
 }
+
+h1 {
+  font-size: 50px;
+}
+
+h2 {
+    font-size: 20px;
+}
+
 body {
-    background-color: light rgb(46, 44, 44);
+  background-color: black;
+  font-size: 10px;
 }
+
+p {
+  color: white;
+}
+
 .target {
-    width: 20vw;
-    height: 20vw;
-    display: flex;
-    border: solid 1px red;
+  width: 5vw;
+  height: 5vw;
+  aspect-ratio: 1/1;
+  font-size: 50px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  border: solid 1px red;
+}
+
+.guessed {
+  width: 3vw;
+  height: 3vw;
+  font-size: 20px;
+  display: flex;
+  flex-direction: wrap;
+  justify-content: center;
+  text-align: center;
+}
+
+.guessed-letters {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  width: 20%;
+  margin: 0 0 0 auto;
+  text-align: center;
+}
+
+.guess-header {
+  text-align: right;
+  margin: 0 20px 20px 0;
 }
