@@ -1,10 +1,20 @@
 User Story:
 1) As a user, I want to arrive at website that has a title of the name I'm about to play
 2) As a user, I want a prompt of a hint of the word I am guessing
-3) As a user, I want a prompt that tells me to guess a letter
 4) As a user, I want to see spaces that represent the number of letters in the target word
 5) As a user, I want see a counter of the number of tries I have left/a visual representation of the amount of tries
 6) As a user, I want to store the correct letters of the word in the corresponding boxes and the incorrect letters in another container on the page
 7) As a user, if the incorrect guesses are more than 4, then I want a lose display
 8) As a user, I want to prompt a win display if the word is guessed correctly
 9) As a user, I want to be able to replay the game
+
+Pseudocode:
+- Display title in bold upon entering webpage
+- Display a hint of the target word
+- Display a "Guess A Letter!" prompt
+- Use flexbox to create boxes corresponding to the correct number of letters of the target word
+    - When they guess correct letter it displays in the box
+- Initilize a counter of the number of inccorrect tries player has left ('lives' = 4);
+- Loop run while 'lives' > 0
+- Prompt a display when player wins or loses
+- Make a 'Try Again' button to be able to replay
