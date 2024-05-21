@@ -1,12 +1,12 @@
 /*-------------------------------- Constants --------------------------------*/
 
-const winningWord = ['O', 'R', 'A', 'N', 'G', 'E'];
+const winningWord = ["O", "R", "A", "N", "G", "E"];
 
 /*-------------------------------- Variables --------------------------------*/
 
 let guessedLetters = [];
 
-let targetWord = ['', '', '', '', '', '']
+let targetWord = ["", "", "", "", "", ""];
 
 let mistakes = 0;
 
@@ -14,122 +14,100 @@ const maxMistakes = 4;
 
 let winner = false;
 
-let msg;
-
-
-
-
-
+let msg = "";
 
 /*------------------------ Cached Element References ------------------------*/
 
-const guessedButtonsEl = document.querySelectorAll('.guessed-letters button');
+const guessedButtonsEl = document.querySelectorAll(".guessed-letters button");
 // console.dir(guessedButtonsEl);
 
-
-
-const resultDisplayEl = document.querySelector('#result-display');
+const resultDisplayEl = document.querySelector("#result-display");
 // console.log(resultDisplayEl);
 
-
-const targetEls = document.querySelectorAll('.target')
+const targetEls = document.querySelectorAll(".target");
 // console.log(targetEl);
 
-
-
-const resetBtnEl = document.querySelector('.reset');
+const resetBtnEl = document.querySelector(".reset");
 // console.log(resetBtnEl);
 
 /*-------------------------------- Functions --------------------------------*/
 
 const init = () => {
-    guessedLetters = [];
-    targetWord = ['', '', '', '', '', '']
-    mistakes = 0;
-    winner = false;
-    guessedButtonsEl.forEach(button => {
-        button.disabled = false;
-    });
-    updateTargetWord();
-    updateMessage();
-    render();
+  guessedLetters = [];
+  targetWord = ["", "", "", "", "", ""];
+  mistakes = 0;
+  winner = false;
+  guessedButtonsEl.forEach((button) => {
+    button.disabled = false;
+  });
+  updateMessage();
+  render();
 };
 
+const updateMessage = () => {
+  if (winner) {
+    msg = "Congratulations! You Won!";
+  } else if (mistake >= maxMistakes) {
+    msg = "Sorry! You lost! The word was" + winningWord.join("");
+  } else {
+    msg = `You have ${maxMistakes - mistakes} mistakes left!`;
+  }
+};
 
+const updateTargetWord = () => {
+  targetWord.forEach((element, idx) => {
+    const targetEl = targetEls[idx];
+    targetEl.textContent = element;
+  });
+};
 
-
+const render = () => {
+  targetWord.forEach((letter, idx) => {
+    targetEls[idx].textContent = letter;
+  });
+  resultDisplayEl.textContent = msg;
+};
 
 const handleGuessedLetters = (event) => {
-    const guessedButtonsEl = winningWord.find((letter) {
-        return 
-    })
+    const guessedButton = event.target.closest("button");
+    const guessedLetter = guessedButton.textContent.trim();
 
+    if (!guessedLetters.includes(guessedLetter)) {
+      guessedLetters.push(guessedLetter);
 
+      if (winningWord.includes(guessedLetter)) {
+        winningWord.forEach((letter, idx) => {
+          if (letter === guessedLetter) {
+            targetWord[idx] = guessedLetter;
+          }
+        });
+        updateTargetWord();
+      } else {
+        mistakes++;
+        //update foodman
+      }
 
-    winningWord.forEach((letter) => {
-        if (letter === event.target.id) {
-            winningWord.find[idx] = guessedButton;
-            updateTargetWord();
-            // correct guessed
-         } else if (targetWord.join('') === winningWord.join('')) {
-                winner = true;
-            } else {
-                mistakes++;
-                //reveal part of Foodman
-            }
-         
-        
-        // guessedButton.disabled = true;
-    });
-
-
-
-
-
-
-    // if (event.target.tagName === 'BUTTON' || event.target.tagName === 'DIV') {
-    //     const guessedButton = event.target;
-    //     const guessedLetter = guessedButton.textContent;
-    // }
-    
-    
-    
-};
-
-// const disableGuessedButtons = (handleGuessedLetters) => {
-    //     const guessedButtonsEl = document.querySelectorAll('.guessed-letters button');
-    //     guessedButtonsEl.forEach(guessedButton => guessedButton.disabled = true);
-    // };
-    // console.dir(disableGuessedButtons);
-    
-    const updateMessage = () => {
-        if (winner) {
-            msg = 'Congratulations! You Won!'
-        } else if (mistake >= maxMistakes) {
-            msg = 'Sorry! You lost! The word was' + winningWord.join('');
-        } else {
-            msg = `You have ${maxMistakes - mistakes} mistakes left!`
-        }
-    };
-    
-    const updateTargetWord = () => {
-        targetWord.forEach((element, idx) => {
-            const targetEl = targetEls[idx];
-            targetEl.textContent = element;
-        })
+      guessedButton.disabled = true;
     }
-    
-    
-    const render = () => {
-        resultDisplayEl.textContent = `${msg}`;
-    };
-    
-    
-    // init();
-    
-    /*----------------------------- Event Listeners -----------------------------*/
-    guessedButtonsEl.forEach(button => {
-        button.addEventListener('click', handleGuessedLetters);
-    });
-    
-    resetBtnEl.addEventListener('click', init);
+
+    if (targetWord.join("") === winningWord.join("")) {
+      winner = true;
+    }
+
+    updateMessage();
+    render();
+  };
+
+// function disableAllButtons() {
+//     const buttons = document.querySelectorAll("#letters button");
+//     buttons.forEach(button => button.disabled = true);
+// }
+
+// init();
+
+/*----------------------------- Event Listeners -----------------------------*/
+guessedButtonsEl.forEach((button) => {
+  button.addEventListener("click", handleGuessedLetters);
+});
+
+resetBtnEl.addEventListener("click", init);

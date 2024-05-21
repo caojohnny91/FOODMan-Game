@@ -55,6 +55,10 @@ p {
   text-align: center;
 }
 
+.guessed:hover {
+    background: red;
+}
+
 .guessed-letters {
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
