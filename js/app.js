@@ -55,7 +55,7 @@ const updateMessage = () => {
   if (winner) {
     msg = 'Congratulations! You Won!';
   } else if (mistakes >= maxMistakes) {
-    msg = 'Sorry! You lost! The word was' + winningWord.join('');
+    msg = 'Sorry! You lost! The word was ' + winningWord.join('');
   } else {
     msg = `You have ${maxMistakes - mistakes} mistakes left!`;
   }
@@ -100,29 +100,15 @@ const handleGuessedLetters = (event) => {
 };
 
 
-// function disableAllButtons() {
-//     const buttons = document.querySelectorAll("#letters button");
-//     buttons.forEach(button => button.disabled = true);
-// }
+function disableAllButtons() {
+    const buttons = document.querySelectorAll("#letters button");
+    buttons.forEach(button => button.disabled = true);
+}
 
-
+init();
 /*----------------------------- Event Listeners -----------------------------*/
 guessedButtonsEl.forEach((button) => {
     button.addEventListener("click", handleGuessedLetters);
 });
 
-resetBtnEl.addEventListener('click', () => {
-    guessedLetters = [];
-    targetWord = ['', '', '', '', '', ''];
-    mistakes = 0;
-    winner = false;
-    guessedButtonsEl.forEach(button => {
-        button.disabled = false;
-    });
-    updateMessage();
-    render();
-});
-
-/* initialize the game */
-render();
-updateMessage();
+resetBtnEl.addEventListener('click', init);
