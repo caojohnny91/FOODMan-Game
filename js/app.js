@@ -60,18 +60,27 @@ const init = () => {
 
 
 const handleGuessedLetters = (event) => {
+    const guessedButtonsEl = winningWord.find((letter) {
+        return 
+    })
+
+
+
     winningWord.forEach((letter) => {
         if (letter === event.target.id) {
-            targetWord[idx] = guessedButton;
+            winningWord.find[idx] = guessedButton;
             updateTargetWord();
             // correct guessed
-        } else {
-            mistakes++;
-            //reveal part of Foodman
-        }
-
+         } else if (targetWord.join('') === winningWord.join('')) {
+                winner = true;
+            } else {
+                mistakes++;
+                //reveal part of Foodman
+            }
+         
+        
         // guessedButton.disabled = true;
-    })
+    });
 
 
 
