@@ -12,9 +12,9 @@ let mistakes = 0;
 
 const maxMistakes = 4;
 
-let winner = false; // maybe dont need?
+let winner = false;
 
-let msg;
+let msg = '';
 
 
 
@@ -23,7 +23,7 @@ let msg;
 
 /*------------------------ Cached Element References ------------------------*/
 
-const guessedButtonsEl = document.querySelectorAll('.guessed');
+const guessedButtonsEl = document.querySelectorAll('.guessed-letters button');
 // console.dir(guessedButtonsEl);
 
 
@@ -42,18 +42,25 @@ const resetBtnEl = document.querySelector('.reset');
 
 /*-------------------------------- Functions --------------------------------*/
 
-// const init = () => {
-//     // guessedLetters = []; not sure about this
-//     targetWord = ['', '', '', '', '', '']
-//     mistakes = 0;
-//     maxMistakes = 4;
-//     winner = false;
-//     render ();
-// }
+const init = () => {
+    guessedLetters = [];
+    targetWord = ['', '', '', '', '', '']
+    mistakes = 0;
+    maxMistakes = 4;
+    winner = false;
+    guessedButtonsEl.forEach(button => {
+        button.disabled = false;
+    });
+    render();
+};
 
 const render = () => {
-    // render logic
-}
+    targetWord.forEach((letter, idx) => {
+        targetEls[idx].textContent = letter;
+    });
+    resultDisplayEl.textContent = msg;
+    updateTargetWord();
+};
 
 const updateMessage = () => {
     if (winner) {
@@ -68,14 +75,20 @@ const updateMessage = () => {
 const updateTargetWord = () => {
     targetWord.forEach((element, idx) => {
         const targetEl = targetEls[idx];
-        targetEl.textContent = element; // not sure about this
+        targetEl.textContent = element;
     })
 }
 
 
 const handleGuessedLetters = (event) => {
-    console.log(handleGuessedLetters);
-    updateTargetWord;
+    if (event.target.tagName === 'BUTTON') {
+        const guessedButton = event.target;
+        const guessedLetter = guessedButton.textContent;
+    }
+
+
+
+
 };
 
 const disableGuessedButtons = (handleGuessedLetters) => {
@@ -93,4 +106,4 @@ guessedButtonsEl.forEach(button => {
     document.addEventListener('click', handleGuessedLetters);
 });
 
-// resetBtnEl.addEventListener('click', init);
+resetBtnEl.addEventListener('click', init);
