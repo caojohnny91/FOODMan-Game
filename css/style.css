@@ -29,6 +29,7 @@ p {
 }
 
 .target {
+  font: white;  
   width: 5vw;
   height: 5vw;
   aspect-ratio: 1/1;
@@ -38,6 +39,10 @@ p {
   justify-content: center;
   text-align: center;
   border: solid 1px red;
+}
+
+.target-word {
+    color: white;
 }
 
 .guessed {
@@ -63,7 +68,7 @@ p {
   margin: 0 20px 20px 0;
 }
   
-  button:hover {
+button:hover {
     cursor: pointer;
   }
 

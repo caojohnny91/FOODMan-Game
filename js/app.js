@@ -1,7 +1,5 @@
 /*-------------------------------- Constants --------------------------------*/
 
-const word = "ORANGE"; // do i need this?
-
 const winningWord = ['O', 'R', 'A', 'N', 'G', 'E'];
 
 /*-------------------------------- Variables --------------------------------*/
@@ -14,7 +12,9 @@ let mistakes = 0;
 
 const maxMistakes = 4;
 
-let winner = false;
+let winner = false; // maybe dont need?
+
+let msg;
 
 
 
@@ -23,13 +23,13 @@ let winner = false;
 
 /*------------------------ Cached Element References ------------------------*/
 
-const buttons = document.querySelectorAll('.guessed');
-// console.log(buttons);
+const guessedButtonsEl = document.querySelectorAll('.guessed');
+// console.dir(guessedButtonsEl);
 
 
 
-const messageEl = document.querySelector('#message');
-// console.log(messageEl);
+const resultDisplayEl = document.querySelector('#result-display');
+// console.log(resultDisplayEl);
 
 
 const targetEls = document.querySelectorAll('.target')
@@ -52,10 +52,18 @@ const resetBtnEl = document.querySelector('.reset');
 // }
 
 const render = () => {
+    // render logic
 }
 
 const updateMessage = () => {
-}
+    if (winner) {
+        msg = 'Congratulations! You Won!'
+    } else if (mistake >= maxMistakes) {
+        msg = 'Sorry! You lost! The word was' + winningWord.join('');
+    } else {
+        msg = `You have ${maxMistakes - mistakes} mistakes left!`
+    }
+};
 
 const updateTargetWord = () => {
     targetWord.forEach((element, idx) => {
@@ -65,13 +73,24 @@ const updateTargetWord = () => {
 }
 
 
+const handleGuessedLetters = (event) => {
+    console.log(handleGuessedLetters);
+    updateTargetWord;
+};
 
-
+const disableGuessedButtons = (handleGuessedLetters) => {
+    const guessedButtonsEl = document.querySelectorAll('.guessed');
+    guessedButtonsEl.forEach(guessedButton => guessedButton.disabled = true);
+};
+// console.dir(disableGuessedButtons);
 
 
 
 // init();
+
 /*----------------------------- Event Listeners -----------------------------*/
+guessedButtonsEl.forEach(button => {
+    document.addEventListener('click', handleGuessedLetters);
+});
 
-
-
+// resetBtnEl.addEventListener('click', init);
