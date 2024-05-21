@@ -1,12 +1,12 @@
 /*-------------------------------- Constants --------------------------------*/
 
-const winningWord = ["O", "R", "A", "N", "G", "E"];
+const winningWord = ['O', 'R', 'A', 'N', 'G', 'E'];
 
 /*-------------------------------- Variables --------------------------------*/
 
 let guessedLetters = [];
 
-let targetWord = ["", "", "", "", "", ""];
+let targetWord = ['', '', '', '', '', ''];
 
 let mistakes = 0;
 
@@ -14,14 +14,14 @@ const maxMistakes = 4;
 
 let winner = false;
 
-let msg = "";
+let msg = '';
 
 /*------------------------ Cached Element References ------------------------*/
 
-const guessedButtonsEl = document.querySelectorAll(".guessed-letters button");
+const guessedButtonsEl = document.querySelectorAll(".guessed");
 // console.dir(guessedButtonsEl);
 
-const resultDisplayEl = document.querySelector("#result-display");
+const resultDisplayEl = document.querySelector("#results-display");
 // console.log(resultDisplayEl);
 
 const targetEls = document.querySelectorAll(".target");
@@ -34,7 +34,7 @@ const resetBtnEl = document.querySelector(".reset");
 
 const init = () => {
   guessedLetters = [];
-  targetWord = ["", "", "", "", "", ""];
+  targetWord = ['', '', '', '', '', ''];
   mistakes = 0;
   winner = false;
   guessedButtonsEl.forEach((button) => {
@@ -44,11 +44,18 @@ const init = () => {
   render();
 };
 
+const render = () => {
+  targetWord.forEach((letter, idx) => {
+    targetEls[idx].textContent = letter;
+  });
+  resultDisplayEl.textContent = msg;
+};
+
 const updateMessage = () => {
   if (winner) {
-    msg = "Congratulations! You Won!";
-  } else if (mistake >= maxMistakes) {
-    msg = "Sorry! You lost! The word was" + winningWord.join("");
+    msg = 'Congratulations! You Won!';
+  } else if (mistakes >= maxMistakes) {
+    msg = 'Sorry! You lost! The word was' + winningWord.join('');
   } else {
     msg = `You have ${maxMistakes - mistakes} mistakes left!`;
   }
@@ -61,12 +68,6 @@ const updateTargetWord = () => {
   });
 };
 
-const render = () => {
-  targetWord.forEach((letter, idx) => {
-    targetEls[idx].textContent = letter;
-  });
-  resultDisplayEl.textContent = msg;
-};
 
 const handleGuessedLetters = (event) => {
     const guessedButton = event.target.closest("button");
@@ -96,18 +97,32 @@ const handleGuessedLetters = (event) => {
 
     updateMessage();
     render();
-  };
+};
+
 
 // function disableAllButtons() {
 //     const buttons = document.querySelectorAll("#letters button");
 //     buttons.forEach(button => button.disabled = true);
 // }
 
-// init();
 
 /*----------------------------- Event Listeners -----------------------------*/
 guessedButtonsEl.forEach((button) => {
-  button.addEventListener("click", handleGuessedLetters);
+    button.addEventListener("click", handleGuessedLetters);
 });
 
-resetBtnEl.addEventListener("click", init);
+resetBtnEl.addEventListener('click', () => {
+    guessedLetters = [];
+    targetWord = ['', '', '', '', '', ''];
+    mistakes = 0;
+    winner = false;
+    guessedButtonsEl.forEach(button => {
+        button.disabled = false;
+    });
+    updateMessage();
+    render();
+});
+
+/* initialize the game */
+render();
+updateMessage();
