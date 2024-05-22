@@ -2,6 +2,8 @@
 
 const winningWord = ['O', 'R', 'A', 'N', 'G', 'E'];
 
+const maxMistakes = 4;
+
 /*-------------------------------- Variables --------------------------------*/
 
 let guessedLetters = [];
@@ -9,8 +11,6 @@ let guessedLetters = [];
 let targetWord = ['', '', '', '', '', ''];
 
 let mistakes = 0;
-
-const maxMistakes = 4;
 
 let winner = false;
 
@@ -37,9 +37,8 @@ const init = () => {
   targetWord = ['', '', '', '', '', ''];
   mistakes = 0;
   winner = false;
-  guessedButtonsEl.forEach((button) => {
-    button.disabled = false;
-  });
+  guessedButtonsEl.forEach(button => button.disabled = false);
+  updateTargetWord();
   updateMessage();
   render();
 };
@@ -99,11 +98,10 @@ const handleGuessedLetters = (event) => {
     render();
 };
 
-
-function disableAllButtons() {
-    const buttons = document.querySelectorAll("#letters button");
-    buttons.forEach(button => button.disabled = true);
-}
+// function disableAllButtons() {
+//     const buttons = document.querySelectorAll("#letters button");
+//     buttons.forEach(button => button.disabled = true);
+// }
 
 init();
 /*----------------------------- Event Listeners -----------------------------*/
@@ -112,3 +110,4 @@ guessedButtonsEl.forEach((button) => {
 });
 
 resetBtnEl.addEventListener('click', init);
+ // reset button does not set buttons back to 'enable'
