@@ -81,12 +81,16 @@ const handleGuessedLetters = (event) => {
     //     //update foodman
     //   }
 
-    //   guessedButton.disabled = true;
+      // disableButton(guessedButton);
     // }
 
 
     // updateMessage();
     // render();
+};
+
+const disableButton = (button) => {
+  button.disabled = true;
 };
 
 const checkForWinner = () => {
