@@ -84,7 +84,8 @@ button:hover {
 
 .foodmanContainer {
   position: relative;
-  width: 100%;
+  width: 250px;
+  height: 400px;
   max-width: 300px; 
   margin: 0 auto;
   overflow: hidden;
@@ -92,7 +93,14 @@ button:hover {
 
 .foodmanImage {
   display: none;
-  width: 100%;
+  width: 250px;
   height: auto;
+  bottom: 0;
+  position: absolute;
+}
+
+#foodman2 {
+  padding: 0 50px;
+  width: 200px;
 }
 
