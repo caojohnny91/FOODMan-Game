@@ -70,14 +70,11 @@ const handleGuessedLetters = (event) => {
     //   guessedLetters.push(guessedLetter);
 
     //   if (winningWord.includes(guessedLetter)) {
-    //     winningWord.forEach((letter, idx) => {
-    //       if (letter === guessedLetter) {
-    //         targetWord[idx] = guessedLetter;
     //       }
     //     });
     //     updateTargetWord();
     //   } else {
-    //     mistakes++;
+    //      incorrectGuess();
     //     //update foodman
     //   }
 
@@ -87,6 +84,19 @@ const handleGuessedLetters = (event) => {
 
     // updateMessage();
     // render();
+};
+
+const correctGuess = (guessedLetter) => {
+  winningWord.forEach((letter,idx) => {
+    if(letter === guessedLetter) {
+      targetWord[idx] = guessedLetter;
+    }
+  })
+};
+
+const incorrectGuess = () => {
+  mistakes++;
+  //update Foodman logic
 };
 
 const disableButton = (button) => {
