@@ -16,7 +16,7 @@ let winner = false;
 
 /*------------------------ Cached Element References ------------------------*/
 
-const guessedButtonsEl = document.querySelectorAll(".guessed");
+const guessedButtonsEl = document.querySelectorAll(".guessed-letters button");
 // console.dir(guessedButtonsEl);
 
 const resultDisplayEl = document.querySelector("#results-display");
@@ -119,4 +119,3 @@ init();
 document.addEventListener("click", handleGuessedLetters);
 
 resetBtnEl.addEventListener('click', init);
- // reset button does not set buttons back to 'enable'
