@@ -63,22 +63,22 @@ const updateTargetWord = () => {
 
 
 const handleGuessedLetters = (event) => {
-    const guessedButton = event.target.closest("button");
-    const guessedLetter = guessedButton.textContent.trim();
+    const guessedButton = event.target.closest('button');
+    const guessedLetter = guessedButton.textContent;
 
     if (!guessedLetters.includes(guessedLetter)) {
       guessedLetters.push(guessedLetter);
 
-    } else if (winningWord.includes(guessedLetter)) {
+      if (winningWord.includes(guessedLetter)) {
       correctGuess(guessedLetter);
       updateTargetWord();
       } else {
         incorrectGuess();
       }
+
       disableButton(guessedButton);
       checkForWinner();
-      updateMessage();
-      render();
+    }
     };
 
 const correctGuess = (guessedLetter) => {
@@ -102,6 +102,8 @@ const checkForWinner = () => {
   if(targetWord.join('') === winningWord.join('')) {
     winner = true;
   }
+  updateMessage();
+  render();
 };
 
 
@@ -114,9 +116,7 @@ const checkForWinner = () => {
 
 init();
 /*----------------------------- Event Listeners -----------------------------*/
-guessedButtonsEl.forEach((button) => {
-    button.addEventListener("click", handleGuessedLetters);
-});
+document.addEventListener("click", handleGuessedLetters);
 
 resetBtnEl.addEventListener('click', init);
  // reset button does not set buttons back to 'enable'
