@@ -93,13 +93,15 @@ const correctGuess = (guessedLetter) => {
 const incorrectGuess = () => {
   mistakes++;
   if (mistakes === 1) {
-    // image stage 1;
+    document.getElementById('#foodman1');
   } else if (mistakes === 2) {
     // image stage 2;
   } else if (mistakes === 3) {
     // image stage 3;
   } else if (mistakes === 4) {
     // image stage 4;
+  } else {
+    // no image;
   }
 };
 
