@@ -106,6 +106,7 @@ const disableAllButtons = () => {
 const checkForWinner = () => {
   if(targetWord.join('') === winningWord.join('')) {
     winner = true;
+    disableAllButtons();
   } else if (mistakes >= maxMistakes) {
     disableAllButtons();
   }
