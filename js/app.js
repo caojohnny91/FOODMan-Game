@@ -29,7 +29,7 @@ const resetBtnEl = document.querySelector(".reset");
 // console.log(resetBtnEl);
 
 const foodmanImagesEl = document.querySelectorAll('.foodmanImage');
-console.log(foodmanImagesEl);
+// console.log(foodmanImagesEl);
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -39,6 +39,7 @@ const init = () => {
   mistakes = 0;
   winner = false;
   guessedButtonsEl.forEach(button => button.disabled = false);
+  updateFoodmanImage();
   updateTargetWord();
   updateMessage();
   render();
@@ -95,10 +96,13 @@ const correctGuess = (guessedLetter) => {
 
 const incorrectGuess = () => {
   mistakes++;
+  updateFoodmanImage();
 };
 
 const updateFoodmanImage = () => {
-
+  foodmanImagesEl.forEach((img, index) => {
+      img.style.display = index === mistakes ? 'block' : 'none';
+  });
 };
 
 const disableButton = (button) => {
