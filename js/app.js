@@ -64,6 +64,7 @@ const updateTargetWord = () => {
 
 const handleGuessedLetters = (event) => {
     const guessedButton = event.target.closest('button');
+    if (!guessedButton || guessedButton.classList.contains('reset') || guessedButton.disabled) return;
     const guessedLetter = guessedButton.textContent;
 
     if (!guessedLetters.includes(guessedLetter)) {
@@ -98,9 +99,15 @@ const disableButton = (button) => {
   button.disabled = true;
 };
 
+const disableAllButtons = () => {
+  guessedButtonsEl.forEach(button => button.disabled = true);
+};
+
 const checkForWinner = () => {
   if(targetWord.join('') === winningWord.join('')) {
     winner = true;
+  } else if (mistakes >= maxMistakes) {
+    disableAllButtons();
   }
   updateMessage();
   render();
@@ -118,4 +125,9 @@ init();
 /*----------------------------- Event Listeners -----------------------------*/
 document.addEventListener("click", handleGuessedLetters);
 
-resetBtnEl.addEventListener('click', init);
+resetBtnEl.addEventListener('click', (event) => {
+  event.stopPropagation();
+  init();
+});
+
+
