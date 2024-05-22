@@ -42,10 +42,7 @@ const init = () => {
 };
 
 const render = () => {
-  targetWord.forEach((letter, idx) => {
-    targetEls[idx].textContent = letter;
-  });
-  resultDisplayEl.textContent = msg;
+  updateTargetWord();
 };
 
 const updateMessage = () => {
@@ -59,10 +56,9 @@ const updateMessage = () => {
 };
 
 const updateTargetWord = () => {
-  targetWord.forEach((element, idx) => {
-    const targetEl = targetEls[idx];
-    targetEl.textContent = element;
-  });
+  targetEls.forEach((targetEl, idx) => {
+    targetEl.textContent = targetWord[idx];
+  })
 };
 
 
@@ -70,31 +66,41 @@ const handleGuessedLetters = (event) => {
     const guessedButton = event.target.closest("button");
     const guessedLetter = guessedButton.textContent.trim();
 
-    if (!guessedLetters.includes(guessedLetter)) {
-      guessedLetters.push(guessedLetter);
+    // if (!guessedLetters.includes(guessedLetter)) {
+    //   guessedLetters.push(guessedLetter);
 
-      if (winningWord.includes(guessedLetter)) {
-        winningWord.forEach((letter, idx) => {
-          if (letter === guessedLetter) {
-            targetWord[idx] = guessedLetter;
-          }
-        });
-        updateTargetWord();
-      } else {
-        mistakes++;
-        //update foodman
-      }
+    //   if (winningWord.includes(guessedLetter)) {
+    //     winningWord.forEach((letter, idx) => {
+    //       if (letter === guessedLetter) {
+    //         targetWord[idx] = guessedLetter;
+    //       }
+    //     });
+    //     updateTargetWord();
+    //   } else {
+    //     mistakes++;
+    //     //update foodman
+    //   }
 
-      guessedButton.disabled = true;
-    }
+    //   guessedButton.disabled = true;
+    // }
 
-    if (targetWord.join("") === winningWord.join("")) {
-      winner = true;
-    }
 
-    updateMessage();
-    render();
+    // updateMessage();
+    // render();
 };
+
+const checkForWinner = () => {
+  if(targetWord.join('') === winningWord.join('')) {
+    winner = true;
+  }
+};
+
+
+
+
+
+
+
 
 
 init();
