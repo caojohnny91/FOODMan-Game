@@ -14,8 +14,6 @@ let mistakes = 0;
 
 let winner = false;
 
-let msg = '';
-
 /*------------------------ Cached Element References ------------------------*/
 
 const guessedButtonsEl = document.querySelectorAll(".guessed");
@@ -52,11 +50,11 @@ const render = () => {
 
 const updateMessage = () => {
   if (winner) {
-    msg = 'Congratulations! You Won!';
+    resultDisplayEl.textContent = 'Congratulations! You Won!';
   } else if (mistakes >= maxMistakes) {
-    msg = 'Sorry! You lost! The word was ' + winningWord.join('');
+    resultDisplayEl.textContent = 'Sorry! You lost! The word was ' + winningWord.join('');
   } else {
-    msg = `You have ${maxMistakes - mistakes} mistakes left!`;
+    resultDisplayEl.textContent = `Mistakes: ${mistakes}/${maxMistakes}`;
   }
 };
 
@@ -98,10 +96,6 @@ const handleGuessedLetters = (event) => {
     render();
 };
 
-// function disableAllButtons() {
-//     const buttons = document.querySelectorAll("#letters button");
-//     buttons.forEach(button => button.disabled = true);
-// }
 
 init();
 /*----------------------------- Event Listeners -----------------------------*/
