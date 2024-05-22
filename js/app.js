@@ -92,7 +92,15 @@ const correctGuess = (guessedLetter) => {
 
 const incorrectGuess = () => {
   mistakes++;
-  //update Foodman logic
+  if (mistakes === 1) {
+    // image stage 1;
+  } else if (mistakes === 2) {
+    // image stage 2;
+  } else if (mistakes === 3) {
+    // image stage 3;
+  } else if (mistakes === 4) {
+    // image stage 4;
+  }
 };
 
 const disableButton = (button) => {
@@ -116,14 +124,8 @@ const checkForWinner = () => {
 
 
 
-
-
-
-
-
-
-init();
 /*----------------------------- Event Listeners -----------------------------*/
+
 document.addEventListener("click", handleGuessedLetters);
 
 resetBtnEl.addEventListener('click', (event) => {
@@ -131,4 +133,7 @@ resetBtnEl.addEventListener('click', (event) => {
   init();
 });
 
+/*-------------------------------- Initialize --------------------------------*/
+
+init();
 
