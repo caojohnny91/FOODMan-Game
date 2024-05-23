@@ -60,7 +60,11 @@ p {
 }
 
 .guessed:hover {
-    background: red;
+  background-color: rgb(246, 87, 87, 0.9);
+}
+
+button:disabled {
+  background-color: rgb(246, 87, 87, 0.9);
 }
 
 .guessed-letters {
@@ -103,4 +107,5 @@ button:hover {
   padding: 0 50px;
   width: 200px;
 }
+
 
