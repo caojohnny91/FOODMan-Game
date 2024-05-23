@@ -1,6 +1,5 @@
 /*-------------------------------- Constants --------------------------------*/
 
-// const winningWord = ['O', 'R', 'A', 'N', 'G', 'E'];
 let winningWord = [];
 
 const words = [
@@ -9,21 +8,21 @@ const words = [
   "shrink",
   "flour",
   "variation",
-  "cottage",
-  "toast",
-  "Venus",
-  "grace",
-  "resign",
-  "housing",
-  "view",
-  "seminar",
-  "licence",
-  "compensation",
-  "still",
-  "girl",
-  "recession",
-  "review",
-  "introduce",
+  // "cottage",
+  // "toast",
+  // "Venus",
+  // "grace",
+  // "resign",
+  // "housing",
+  // "view",
+  // "seminar",
+  // "licence",
+  // "compensation",
+  // "still",
+  // "girl",
+  // "recession",
+  // "review",
+  // "introduce",
 ];
 
 const maxMistakes = 4;

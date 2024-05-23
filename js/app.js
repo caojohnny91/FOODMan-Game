@@ -85,9 +85,7 @@ const createTargetWordDisplay = () => {
 
   targetWord.push('');
 });
-console.log(targetWord)
 };
-
 
 
 
@@ -118,8 +116,6 @@ const updateTargetWord = () => {
   targetEls.forEach((targetEl, idx) => {
     targetEl.textContent = targetWord[idx];
   });
-  console.dir(targetEls);
-  console.log(winningWord);
 };
 
 const handleGuessedLetters = (event) => {
