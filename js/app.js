@@ -8,6 +8,21 @@ const wordsList = [
   { word: "knife", hint: "cutting" },
   { word: "blender", hint: "smooth" },
   { word: "pizza", hint: "flattened dough with toppings" },
+  { word: "oven", hint: "baking and roasting" },
+  { word: "whisk", hint: "mixing and whipping" },
+  { word: "spatula", hint: "flipping and spreading" },
+  { word: "grater", hint: "shredding and zesting" },
+  { word: "strainer", hint: "draining liquids" },
+  { word: "tongs", hint: "grabbing and turning" },
+  { word: "peeler", hint: "removing the outter  surface" },
+  { word: "apple", hint: "often red or green" },
+  { word: "carrot", hint: "rabbit" },
+  { word: "sushi", hint: "rice and raw fish" },
+  { word: "salad", hint: "mixed greens and vegetables" },
+  { word: "cheese", hint: "processed dairy" },
+  { word: "steak", hint: "a cut of beef" },
+  { word: "lemon", hint: "sour citrus" },
+  { word: "lasagna", hint: "a layered pasta dish" },
 ];
 
 const maxMistakes = 4;
@@ -79,7 +94,7 @@ const render = () => {
 
 const updateMessage = () => {
   if (winner) {
-    resultDisplayEl.textContent = "Congratulations! You Won!";
+    resultDisplayEl.textContent = "YES CHEF! You Won!";
   } else if (mistakes >= maxMistakes) {
     resultDisplayEl.textContent =
       "Sorry! You lost! The word was " + winningWord.join("");
