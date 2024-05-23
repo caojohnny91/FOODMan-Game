@@ -46,37 +46,40 @@ const foodmanImagesEl = document.querySelectorAll(".foodmanImage");
 /*-------------------------------- Functions --------------------------------*/
 
 const init = () => {
-  // createTargetWordDisplay();
+  createTargetWordDisplay();
   guessedLetters = [];
   targetWord = [];
   mistakes = 0;
   winner = false;
   guessedButtonsEl.forEach((button) => (button.disabled = false));
+  randomWord();
   updateFoodmanImage();
   updateTargetWord();
   updateMessage();
   render();
 };
 
-const randomWord = () => {
+let randomWord = () => {
   const {word, hint} = wordsList[Math.floor(Math.random() * wordsList.length)];
-  console.log(word, hint);
+  document.querySelector('.hint-text i').innerText = hint;
+
 }
 
-randomWord();
 
-// const createTargetWordDisplay = () => {
-//   targetContainer.innerHTML = "";
-//   let randomIndex = Math.floor(Math.random() * wordsList.length);
-//   winningWord = wordsList.word[randomIndex].toUpperCase().split("");
-//   winningWord.forEach((letter) => {
-//     let targetEl = document.createElement("div");
-//     targetEl.classList.add("target");
-//     targetContainer.appendChild(targetEl);
+const createTargetWordDisplay = () => {
+  targetContainer.innerHTML = "";
+  // let randomIndex = Math.floor(Math.random() * wordsList.length);
 
-//     targetWord.push("");
-//   });
-// };
+  
+  winningWord = wordsList.word[randomIndex].toUpperCase().split("");
+  winningWord.forEach((letter) => {
+    let targetEl = document.createElement("div");
+    targetEl.classList.add("target");
+    targetContainer.appendChild(targetEl);
+
+    targetWord.push("");
+  });
+};
 
 const render = () => {
   updateTargetWord();
