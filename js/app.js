@@ -59,25 +59,21 @@ const init = () => {
   render();
 };
 
-let randomWord = () => {
+const randomWord = () => {
   const {word, hint} = wordsList[Math.floor(Math.random() * wordsList.length)];
+  winningWord = word.toUpperCase().split("");
+  targetWord = new Array(winningWord.length).fill('');
   document.querySelector('.hint-text i').innerText = hint;
-
 }
 
 
 const createTargetWordDisplay = () => {
   targetContainer.innerHTML = "";
-  // let randomIndex = Math.floor(Math.random() * wordsList.length);
-
-  
-  winningWord = wordsList.word[randomIndex].toUpperCase().split("");
   winningWord.forEach((letter) => {
     let targetEl = document.createElement("div");
     targetEl.classList.add("target");
     targetContainer.appendChild(targetEl);
-
-    targetWord.push("");
+    // targetWord.push("");
   });
 };
 
