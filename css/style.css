@@ -16,7 +16,7 @@ h1 {
 }
 
 h2 {
-    font-size: 20px;
+  font-size: 20px;
 }
 
 #results-display {
@@ -33,7 +33,7 @@ p {
 }
 
 .target {
-  font: white;  
+  font: white;
   width: 5vw;
   height: 5vw;
   aspect-ratio: 1/1;
@@ -46,7 +46,7 @@ p {
 }
 
 .target-word {
-    color: white;
+  color: white;
 }
 
 .guessed {
@@ -81,16 +81,16 @@ button:disabled {
   justify-content: end;
   margin: 0 20px 20px 0;
 }
-  
+
 button:hover {
-    cursor: pointer;
-  }
+  cursor: pointer;
+}
 
 .foodmanContainer {
   position: relative;
   width: 250px;
   height: 400px;
-  max-width: 300px; 
+  max-width: 300px;
   margin: 0 auto;
   overflow: hidden;
 }
@@ -107,5 +107,3 @@ button:hover {
   padding: 0 50px;
   width: 200px;
 }
-
-

@@ -40,19 +40,14 @@ let winner = false;
 /*------------------------ Cached Element References ------------------------*/
 
 const guessedButtonsEl = document.querySelectorAll(".guessed-letters button");
-// console.dir(guessedButtonsEl);
 
 const resultDisplayEl = document.querySelector("#results-display");
-// console.log(resultDisplayEl);
 
 const targetContainer = document.querySelector(".target-word");
-// console.log(targetWordContainer);
 
 const resetBtnEl = document.querySelector(".reset");
-// console.log(resetBtnEl);
 
 const foodmanImagesEl = document.querySelectorAll(".foodmanImage");
-// console.log(foodmanImagesEl);
 
 /*-------------------------------- Functions --------------------------------*/
 
