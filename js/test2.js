@@ -1,28 +1,16 @@
 /*-------------------------------- Constants --------------------------------*/
 
+// const winningWord = ['O', 'R', 'A', 'N', 'G', 'E'];
 let winningWord = [];
 
-const words = [
+const wordsList = [
+  // food names
   "adjust",
   "crosswalk",
   "shrink",
   "flour",
   "variation",
-  // "cottage",
-  // "toast",
-  // "Venus",
-  // "grace",
-  // "resign",
-  // "housing",
-  // "view",
-  // "seminar",
-  // "licence",
-  // "compensation",
-  // "still",
-  // "girl",
-  // "recession",
-  // "review",
-  // "introduce",
+  "toast",
 ];
 
 const maxMistakes = 4;
@@ -31,13 +19,11 @@ const maxMistakes = 4;
 
 let guessedLetters = [];
 
-let targetWord = ["", "", "", "", "", ""];
+let targetWord = [];
 
 let mistakes = 0;
 
 let winner = false;
-
-let randomIndex = Math.floor(Math.random() * words.length);
 
 /*------------------------ Cached Element References ------------------------*/
 
@@ -47,8 +33,11 @@ const guessedButtonsEl = document.querySelectorAll(".guessed-letters button");
 const resultDisplayEl = document.querySelector("#results-display");
 // console.log(resultDisplayEl);
 
-const targetEls = document.querySelectorAll(".target");
-// console.log(targetEl);
+// const targetEls = document.querySelectorAll(".target");
+// // console.log(targetEl);
+
+const targetContainer = document.querySelector(".target-word");
+// console.log(targetWordContainer);
 
 const resetBtnEl = document.querySelector(".reset");
 // console.log(resetBtnEl);
@@ -59,8 +48,9 @@ const foodmanImagesEl = document.querySelectorAll(".foodmanImage");
 /*-------------------------------- Functions --------------------------------*/
 
 const init = () => {
+  createTargetWordDisplay();
   guessedLetters = [];
-  targetWord = ["", "", "", "", "", ""];
+  targetWord = [];
   mistakes = 0;
   winner = false;
   guessedButtonsEl.forEach((button) => (button.disabled = false));
@@ -68,6 +58,19 @@ const init = () => {
   updateTargetWord();
   updateMessage();
   render();
+};
+
+const createTargetWordDisplay = () => {
+  targetContainer.innerHTML = "";
+  let randomIndex = Math.floor(Math.random() * wordsList.length);
+  winningWord = wordsList[randomIndex].toUpperCase().split("");
+  winningWord.forEach((letter) => {
+    let targetEl = document.createElement("div");
+    targetEl.classList.add("target");
+    targetContainer.appendChild(targetEl);
+
+    targetWord.push("");
+  });
 };
 
 const render = () => {
@@ -86,7 +89,7 @@ const updateMessage = () => {
 };
 
 const updateTargetWord = () => {
-  winningWord = words[randomIndex].split("");
+  const targetEls = document.querySelectorAll(".target");
   targetEls.forEach((targetEl, idx) => {
     targetEl.textContent = targetWord[idx];
   });

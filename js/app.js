@@ -3,27 +3,12 @@
 // const winningWord = ['O', 'R', 'A', 'N', 'G', 'E'];
 let winningWord = [];
 
-const words = [ // food names
-  "adjust",
-  "crosswalk",
-  "shrink",
-  "flour",
-  "variation",
-  "cottage",
-  "toast",
-  "Venus",
-  "grace",
-  "resign",
-  "housing",
-  "view",
-  "seminar",
-  "licence",
-  "compensation",
-  "still",
-  "girl",
-  "recession",
-  "review",
-  "introduce",
+const wordsList = [
+  {word: "orange", hint: "a color and a fruit"},
+  {word: "searing", hint: "a high heat cooking process"},
+  {word: "knife", hint: "cutting"},
+  {word: "blender", hint: "smooth"},
+  {word: "pizza", hint: "flattened dough with toppings"},
 ];
 
 const maxMistakes = 4;
@@ -38,7 +23,6 @@ let mistakes = 0;
 
 let winner = false;
 
-
 /*------------------------ Cached Element References ------------------------*/
 
 const guessedButtonsEl = document.querySelectorAll(".guessed-letters button");
@@ -50,7 +34,7 @@ const resultDisplayEl = document.querySelector("#results-display");
 // const targetEls = document.querySelectorAll(".target");
 // // console.log(targetEl);
 
-const targetContainer = document.querySelector('.target-word');
+const targetContainer = document.querySelector(".target-word");
 // console.log(targetWordContainer);
 
 const resetBtnEl = document.querySelector(".reset");
@@ -62,7 +46,7 @@ const foodmanImagesEl = document.querySelectorAll(".foodmanImage");
 /*-------------------------------- Functions --------------------------------*/
 
 const init = () => {
-  createTargetWordDisplay();
+  // createTargetWordDisplay();
   guessedLetters = [];
   targetWord = [];
   mistakes = 0;
@@ -74,27 +58,25 @@ const init = () => {
   render();
 };
 
-const createTargetWordDisplay = () => {
-  targetContainer.innerHTML = ''
-  let randomIndex = Math.floor(Math.random() * words.length);
-  winningWord = words[randomIndex].toUpperCase().split("");
-  winningWord.forEach((letter) => {
-  let targetEl = document.createElement('div');
-  targetEl.classList.add("target");
-  targetContainer.appendChild(targetEl);
+const randomWord = () => {
+  const {word, hint} = wordsList[Math.floor(Math.random() * wordsList.length)];
+  console.log(word, hint);
+}
 
-  targetWord.push('');
-});
-};
+randomWord();
 
+// const createTargetWordDisplay = () => {
+//   targetContainer.innerHTML = "";
+//   let randomIndex = Math.floor(Math.random() * wordsList.length);
+//   winningWord = wordsList.word[randomIndex].toUpperCase().split("");
+//   winningWord.forEach((letter) => {
+//     let targetEl = document.createElement("div");
+//     targetEl.classList.add("target");
+//     targetContainer.appendChild(targetEl);
 
-
-
-
-
-
-
-
+//     targetWord.push("");
+//   });
+// };
 
 const render = () => {
   updateTargetWord();
