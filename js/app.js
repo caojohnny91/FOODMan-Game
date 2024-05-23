@@ -1,7 +1,5 @@
 /*-------------------------------- Constants --------------------------------*/
 
-let winningWord = [];
-
 const wordsList = [
   { word: "orange", hint: "a color and a fruit" },
   { word: "searing", hint: "a high heat cooking process" },
@@ -28,6 +26,8 @@ const wordsList = [
 const maxMistakes = 4;
 
 /*-------------------------------- Variables --------------------------------*/
+
+let winningWord = [];
 
 let guessedLetters = [];
 
