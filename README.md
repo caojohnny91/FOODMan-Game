@@ -18,5 +18,6 @@ Then, you take another turn and click on another letter. The more mistakes you g
 * CSS
 
 ## Getting Started
+link to Game: https://caojohnny91.github.io/FOODMan-Game/
 
 ## Next Steps
