@@ -145,7 +145,11 @@ const incorrectGuess = () => {
 
 const updateFoodmanImage = () => {
   foodmanImagesEl.forEach((img, index) => {
-    img.style.display = index === mistakes ? "block" : "none";
+    if (index === mistakes) {
+      return img.style.display = "block";
+    } else {
+      return img.style.display = "none";
+    }
   });
 };
 
