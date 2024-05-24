@@ -92,7 +92,7 @@ const updateMessage = () => {
     resultDisplayEl.textContent = "YES CHEF! You Won!";
   } else if (mistakes >= maxMistakes) {
     resultDisplayEl.textContent =
-      "Sorry! You lost! The word was " + winningWord.join("");
+      "You're TOAST! You lost! The word was " + winningWord.join("");
   } else {
     resultDisplayEl.textContent = `Mistakes: ${mistakes}/${maxMistakes}`;
   }
@@ -146,9 +146,9 @@ const incorrectGuess = () => {
 const updateFoodmanImage = () => {
   foodmanImagesEl.forEach((img, index) => {
     if (index === mistakes) {
-      return img.style.display = "block";
+      return (img.style.display = "block");
     } else {
-      return img.style.display = "none";
+      return (img.style.display = "none");
     }
   });
 };
