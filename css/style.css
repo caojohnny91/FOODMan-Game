@@ -69,10 +69,12 @@ p {
 
 .correct {
   background-color: green;
+  color: white;
 }
 
 .incorrect {
   background-color: red;
+  color: white;
 }
 
 .guess-header {
