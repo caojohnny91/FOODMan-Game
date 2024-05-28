@@ -59,20 +59,20 @@ p {
   text-align: center;
 }
 
-.guessed:hover {
-  background-color: rgb(246, 87, 87, 0.9);
-}
-
-button:disabled {
-  background-color: rgb(246, 87, 87, 0.9);
-}
-
 .guessed-letters {
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
   width: 20%;
   margin: 0 0 0 auto;
   text-align: center;
+}
+
+.correct {
+  background-color: green;
+}
+
+.incorrect {
+  background-color: red;
 }
 
 .guess-header {

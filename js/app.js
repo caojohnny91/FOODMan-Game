@@ -12,7 +12,7 @@ const wordsList = [
   { word: "grater", hint: "shredding and zesting" },
   { word: "strainer", hint: "draining liquids" },
   { word: "tongs", hint: "grabbing and turning" },
-  { word: "peeler", hint: "removing the outter  surface" },
+  { word: "peeler", hint: "removing the outter surface" },
   { word: "apple", hint: "often red or green" },
   { word: "carrot", hint: "rabbit" },
   { word: "sushi", hint: "rice and raw fish" },
@@ -56,7 +56,10 @@ const init = () => {
   targetWord = [];
   mistakes = 0;
   winner = false;
-  guessedButtonsEl.forEach((button) => (button.disabled = false));
+  guessedButtonsEl.forEach((button) => {
+    button.disabled = false;
+    button.querySelector('div').classList.remove('correct', 'incorrect');
+  });
   randomWord();
   createTargetWordDisplay();
   updateFoodmanImage();
@@ -119,10 +122,10 @@ const handleGuessedLetters = (event) => {
     guessedLetters.push(guessedLetter);
 
     if (winningWord.includes(guessedLetter)) {
-      correctGuess(guessedLetter);
+      correctGuess(guessedLetter, guessedButton);
       updateTargetWord();
     } else {
-      incorrectGuess();
+      incorrectGuess(guessedButton);
     }
 
     disableButton(guessedButton);
@@ -130,16 +133,18 @@ const handleGuessedLetters = (event) => {
   }
 };
 
-const correctGuess = (guessedLetter) => {
+const correctGuess = (guessedLetter, button) => {
   winningWord.forEach((letter, idx) => {
     if (letter === guessedLetter) {
       targetWord[idx] = guessedLetter;
     }
   });
+  button.querySelector('div').classList.add('correct');
 };
 
-const incorrectGuess = () => {
+const incorrectGuess = (button) => {
   mistakes++;
+  button.querySelector('div').classList.add('incorrect');
   updateFoodmanImage();
 };
 
