@@ -93,7 +93,7 @@ const updateMessage = () => {
   if (winner) {
     resultDisplayEl.textContent = "YES CHEF! You Won!";
   } else if (mistakes >= maxMistakes) {
-    resultDisplayEl.textContent = "You're TOAST! Sorry, the word was " + winningWord.join("");
+    resultDisplayEl.textContent = "You're TOAST! Sorry, the word was " + winningWord.join("") + "!";
   } else {
     resultDisplayEl.textContent = `Mistakes: ${mistakes}/${maxMistakes}`;
   }

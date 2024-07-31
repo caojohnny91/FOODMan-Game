@@ -9,11 +9,11 @@ Then, you take another turn and click on another letter. The more mistakes you g
 ## Screenshots
 
 **Start Screen**
-![Foodman-Start-Screen](https://github.com/caojohnny91/FOODMan-Game/assets/168755794/edf121ac-70f5-4c52-9c36-410674e50531)
+![Foodman-Start-Screen](./assets/images/foodman-start.png)
 **Lose Screen**
-![Foodman-Lose](https://github.com/caojohnny91/FOODMan-Game/assets/168755794/0fa2ae6e-f8f7-4cf1-ba98-a3e08344b5a7)
+![Foodman-Lose](./assets/images/foodman-loss.png)
 **Win Screen**
-![Foodman-Win](https://github.com/caojohnny91/FOODMan-Game/assets/168755794/5f407e03-f69e-450d-b568-8d1a6529ea18)
+![Foodman-Win](./assets/images/foodman-win.png)
 
 ## Technologies Used
 
