@@ -150,14 +150,12 @@ const incorrectGuess = (button) => {
 
 const updateFoodmanImage = () => {
   foodmanImagesEl.forEach((img, index) => {
+    img.classList.remove('active');
     if (index === mistakes) {
-      return (img.style.display = "block");
-    } else {
-      return (img.style.display = "none");
+      img.classList.add('active');
     }
   });
 };
-
 const disableButton = (button) => {
   button.disabled = true;
 };
