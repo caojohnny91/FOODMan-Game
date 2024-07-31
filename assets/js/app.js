@@ -58,7 +58,7 @@ const init = () => {
   winner = false;
   guessedButtonsEl.forEach((button) => {
     button.disabled = false;
-    button.querySelector('div').classList.remove('correct', 'incorrect');
+    button.querySelector("div").classList.remove("correct", "incorrect");
   });
   randomWord();
   createTargetWordDisplay();
@@ -69,8 +69,7 @@ const init = () => {
 };
 
 const randomWord = () => {
-  const { word, hint } =
-    wordsList[Math.floor(Math.random() * wordsList.length)];
+  const { word, hint } = wordsList[Math.floor(Math.random() * wordsList.length)];
   winningWord = word.toUpperCase().split("");
   targetWord = new Array(winningWord.length).fill("");
   document.querySelector(".hint-text i").innerText = hint;
@@ -94,8 +93,7 @@ const updateMessage = () => {
   if (winner) {
     resultDisplayEl.textContent = "YES CHEF! You Won!";
   } else if (mistakes >= maxMistakes) {
-    resultDisplayEl.textContent =
-      "You're TOAST! You lost! The word was " + winningWord.join("");
+    resultDisplayEl.textContent = "You're TOAST! Sorry, the word was " + winningWord.join("");
   } else {
     resultDisplayEl.textContent = `Mistakes: ${mistakes}/${maxMistakes}`;
   }
@@ -110,12 +108,7 @@ const updateTargetWord = () => {
 
 const handleGuessedLetters = (event) => {
   const guessedButton = event.target.closest("button");
-  if (
-    !guessedButton ||
-    guessedButton.classList.contains("reset") ||
-    guessedButton.disabled
-  )
-    return;
+  if (!guessedButton || guessedButton.classList.contains("reset") || guessedButton.disabled) return;
   const guessedLetter = guessedButton.textContent;
 
   if (!guessedLetters.includes(guessedLetter)) {
@@ -139,20 +132,20 @@ const correctGuess = (guessedLetter, button) => {
       targetWord[idx] = guessedLetter;
     }
   });
-  button.querySelector('div').classList.add('correct');
+  button.querySelector("div").classList.add("correct");
 };
 
 const incorrectGuess = (button) => {
   mistakes++;
-  button.querySelector('div').classList.add('incorrect');
+  button.querySelector("div").classList.add("incorrect");
   updateFoodmanImage();
 };
 
 const updateFoodmanImage = () => {
   foodmanImagesEl.forEach((img, index) => {
-    img.classList.remove('active');
+    img.classList.remove("active");
     if (index === mistakes) {
-      img.classList.add('active');
+      img.classList.add("active");
     }
   });
 };

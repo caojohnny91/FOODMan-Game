@@ -65,6 +65,11 @@ button {
   border: none;
   padding: 0;
   cursor: pointer;
+  color: white;
+}
+
+button .guessed {
+  background-color: rgb(100, 100, 100);
 }
 
 button:focus {
@@ -124,7 +129,7 @@ p.hint-text {
 }
 
 .reset {
-  background-color: #ff5722;
+  background-color: #ff3822;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -135,7 +140,7 @@ p.hint-text {
 }
 
 .reset:hover {
-  background-color: #e64a19;
+  background-color: #e85427;
 }
 
 @media (max-width: 768px) {
